@@ -22,7 +22,14 @@ mytable<-addHeaderRow(mytable,value = c("","½Õ¬dªÌ¡G_________________________  ¬
 mytable<-addHeaderRow(mytable,value = names(dttable),cell.properties = cellProperties(background.color = "gray70"))
 mytable[ 1, 1, to = "header"] = my_text
 mytable = setColumnsColors(mytable,j=1:7,colors = "gray80")
+mytable<-setFlexTableBorders(mytable,outer.vertical = borderProperties(width = 3),outer.horizontal = borderProperties(width = 3))
 mytable<-setFlexTableWidths(mytable,widths = c(0.2,0.2,0.9,0.39,1.2,0.47,0.47,0.45,0.47,0.42,0.4,0.43,0.4,1.4))
+mytable[1:2,1:14, to = 'header', side = 'bottom']<-chprop(borderProperties(width = 3))
+mytable[2,"X2", to = 'header', side = 'left']<-chprop(borderProperties(width = 3))
+mytable[2,"Note18", to = 'header', side = 'right']<-chprop(borderProperties(width = 3))
+mytable[1,1:14, to = 'header', side = 'top']<-chprop(borderProperties(width = 0))
+mytable[1,1:14, to = 'header', side = 'right']<-chprop(borderProperties(width = 0))
+mytable[1,1:14, to = 'header', side = 'left']<-chprop(borderProperties(width = 0))
 doc<-addFlexTable(doc,mytable)
 writeDoc(doc,file = "124.docx")
 
@@ -44,8 +51,13 @@ outputdata<-function(x1,y1){
   mytable<-addHeaderRow(mytable,value = c("","½Õ¬dªÌ¡G_________________________  ¬ö¿ıªÌ¡G___________  ½Õ¬d¤é´Á¡G__________\n¹q¤l¿é¤J1¡G__________(      /   /   )   ¹q¤l¿é¤J2¡G__________(      /   /   )"),colspan=c(3,11),cell.properties=cellProperties(border.width = 0),text.properties = textProperties(font.size = 12,font.family = "Calibri"))
   mytable<-addHeaderRow(mytable,value = names(dttable),cell.properties = cellProperties(background.color = "gray70"))
   mytable[ 1, 1, to = "header"] = my_text
+  mytable<-setFlexTableBorders(mytable,outer.vertical = borderProperties(width = 3),outer.horizontal = borderProperties(width = 3))
   mytable = setColumnsColors(mytable,j=6:7,colors = "gray80")
   mytable<-setFlexTableWidths(mytable,widths = c(0.2,0.2,0.9,0.39,1.2,0.47,0.47,0.45,0.47,0.42,0.4,0.43,0.4,1.4))
+  mytable[1:2,1:14, to = 'header', side = 'bottom']<-chprop(borderProperties(width = 3))
+  mytable[1,1:14, to = 'header', side = 'top']<-chprop(borderProperties(width = 0))
+  mytable[1,1:14, to = 'header', side = 'right']<-chprop(borderProperties(width = 0))
+  mytable[1,1:14, to = 'header', side = 'left']<-chprop(borderProperties(width = 0))
   doc<-addFlexTable(doc,mytable)
   writeDoc(doc,file = paste("survey(",x1,",",y1,").docx",sep=""))
   print(paste("¥¿¦b²£¥Í(",x1,",",y1,")",sep=""))
