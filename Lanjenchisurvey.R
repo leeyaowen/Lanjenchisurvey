@@ -18,23 +18,23 @@ outputdata<-function(x1,y1){
   
   #建立docx
   doc <- docx(template = "./調查紀錄紙-範本.docx",empty_template = TRUE)
-  mytable<-FlexTable(dttable,header.columns = FALSE,body.par.props = parProperties(text.align = "right"),body.text.props = textProperties(font.size = 10,font.family = "Calibri"),header.text.props = textProperties(font.size = 10,font.weight = "normal",font.family = "Calibri"))
+  mytable<-FlexTable(dttable,header.columns = FALSE,body.par.props = parProperties(text.align = "right"),body.text.props = textProperties(font.size = 10,font.family = "Calibri"),header.text.props = textProperties(font.size = 10,font.weight = "normal",font.family = "Calibri"),body.cell.props = cellProperties(padding.top = 2,padding.bottom = 2))
   mytable[,1:2]=parProperties(text.align = "center")
-  mytable[,13]=textProperties(font.size = 6)
+  mytable[,13]=textProperties(font.size = 6,font.family = "Calibri")
   mytable[,14]=textProperties(font.size = 6)
   my_text = pot(paste("(",x1,",",y1,")",sep=""), textProperties(color='black', font.size = 20,font.family = "Calibri") )
   mytable<-addHeaderRow(mytable,value = c("","調查者：________________________  紀錄者：___________  調查日期：__________\n電子輸入1：__________(      /   /   )   電子輸入2：__________(      /   /   )"),colspan=c(3,11),cell.properties=cellProperties(border.width = 0),text.properties = textProperties(font.size = 12,font.family = "Calibri"))
   mytable<-addHeaderRow(mytable,value = names(dttable),cell.properties = cellProperties(background.color = "gray70"))
   mytable[ 1, 1, to = "header"] = my_text
   mytable = setColumnsColors(mytable,j=6:7,colors = "gray80")
-  mytable<-setFlexTableWidths(mytable,widths = c(0.2,0.2,0.9,0.4,1.2,0.5,0.47,0.4,0.43,0.42,0.4,0.43,0.4,1.4))
+  mytable<-setFlexTableWidths(mytable,widths = c(0.2,0.2,0.8,0.4,1.2,0.5,0.47,0.4,0.43,0.52,0.4,0.43,0.4,1.4))
   mytable<-setFlexTableBorders(mytable,outer.vertical = borderProperties(width = 3),outer.horizontal = borderProperties(width = 3))
   mytable[1,1:14, to = 'header', side = 'bottom']<-chprop(borderProperties(width = 3))
   mytable[1,1:14, to = 'header', side = 'top']<-chprop(borderProperties(width = 0))
   mytable[1,1:14, to = 'header', side = 'right']<-chprop(borderProperties(width = 0))
   mytable[1,1:14, to = 'header', side = 'left']<-chprop(borderProperties(width = 0))
   doc<-addFlexTable(doc,mytable)
-  writeDoc(doc,file = paste("survey(",x1,",",y1,").docx",sep=""))
+  writeDoc(doc,file = paste("surveyline",y1,"(",x1,",",y1,").docx",sep=""))
   print(paste("正在產生(",x1,",",y1,")",sep=""))
 }
 
