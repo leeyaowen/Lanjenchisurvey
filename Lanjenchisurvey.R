@@ -1,5 +1,3 @@
-library(gridExtra)
-library(grid)
 library(ReporteRs)
 library(dplyr)
 dt<-read.csv("./Lanjenchi5.88survey.csv")
