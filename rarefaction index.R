@@ -22,19 +22,19 @@ rqdf2013<-data.frame(s=numeric())
 rqdf2019<-data.frame(s=numeric())
 
 for (i in 1:300) {
-  rqdf1991<-bind_rows(rqdf1991,data.frame(s=hurlbert(plotspnum1991,taxon = sp,count = plotspnum1991[,i+1],n = 10)))
+  rqdf1991[i,1]<-hurlbert(plotspnum1991,taxon = sp,count = plotspnum1991[,i+1],n = 10)
 }
 for (i in 1:300) {
-  rqdf1997<-bind_rows(rqdf1997,data.frame(s=hurlbert(plotspnum1997,taxon = sp,count = plotspnum1997[,i+1],n = 10)))
+  rqdf1997[i,1]<-hurlbert(plotspnum1997,taxon = sp,count = plotspnum1997[,i+1],n = 10)
 }
 for (i in 1:300) {
-  rqdf2005<-bind_rows(rqdf2005,data.frame(s=hurlbert(plotspnum2005,taxon = sp,count = plotspnum2005[,i+1],n = 10)))
+  rqdf2005[i,1]<-hurlbert(plotspnum2005,taxon = sp,count = plotspnum2005[,i+1],n = 10)
 }
 for (i in 1:300) {
-  rqdf2013<-bind_rows(rqdf2013,data.frame(s=hurlbert(plotspnum2013,taxon = sp,count = plotspnum2013[,i+1],n = 10)))
+  rqdf2013[i,1]<-hurlbert(plotspnum2013,taxon = sp,count = plotspnum2013[,i+1],n = 10)
 }
 for (i in 1:300) {
-  rqdf2019<-bind_rows(rqdf2019,data.frame(s=hurlbert(plotspnum2019,taxon = sp,count = plotspnum2019[,i+1],n = 10)))
+  rqdf2019[i,1]<-hurlbert(plotspnum2019,taxon = sp,count = plotspnum2019[,i+1],n = 10)
 }
 
 rqdf1991 %<>% bind_cols(.,data.frame(year=rep("1991",300),stringsAsFactors = F))
